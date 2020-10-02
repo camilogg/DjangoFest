@@ -1,30 +1,30 @@
 migrate:
-	docker-compose exec api ./manage.py makemigrations
-	docker-compose exec api ./manage.py migrate
+	docker-compose exec djangofest ./manage.py makemigrations
+	docker-compose exec djangofest ./manage.py migrate
 
 requirements:
-	docker-compose exec api pip install -r requirements.txt
+	docker-compose exec djangofest pip install -r requirements.txt
 
 statics:
-	docker-compose exec api ./manage.py collectstatic --no-input
+	docker-compose exec djangofest ./manage.py collectstatic --no-input
 
 superuser:
-	docker-compose exec api ./manage.py createsuperuser
+	docker-compose exec djangofest ./manage.py createsuperuser
 
 app:
-	docker-compose exec api ./manage.py startapp $(APP_NAME)
+	docker-compose exec djangofest ./manage.py startapp $(APP_NAME)
 
 logs:
 	docker-compose logs -f -t --tail=$(lines) $(service)
 
 mergemigrations:
-	docker-compose exec api ./manage.py makemigrations --merge
+	docker-compose exec djangofest ./manage.py makemigrations --merge
 
 test:
-	docker-compose exec api ./manage.py test
+	docker-compose exec djangofest ./manage.py test
 
 makemessages:
-	docker-compose exec api ./manage.py makemessages -l es
+	docker-compose exec djangofest ./manage.py makemessages -l es
 
 compilemessages:
-	docker-compose exec api ./manage.py compilemessages -f
+	docker-compose exec djangofest ./manage.py compilemessages -f
