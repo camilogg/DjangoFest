@@ -19,3 +19,5 @@ djangorestframework==3.11
 drf-yasg==1.17.1
 django-cors-headers==3.5.0
 django-3-jet==1.0.8
+pillow
+django-prettyjson
