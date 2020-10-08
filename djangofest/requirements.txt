@@ -21,3 +21,4 @@ django-cors-headers==3.5.0
 django-3-jet==1.0.8
 pillow
 django-prettyjson
+django-filter
