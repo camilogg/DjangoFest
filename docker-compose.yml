@@ -4,7 +4,7 @@ services:
     image: postgres:9.6
     env_file: .env
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
@@ -15,17 +15,28 @@ services:
     volumes:
       - ./djangofest:/djangofest
     ports:
-      - "8000:8000"
+      - '8000:8000'
     depends_on:
       - db
     environment:
       - DJANGO_SETTINGS_MODULE=djangofest.settings.dev
       - PYTHONUNBUFFERED=1
 
-  redis:
-    image: "redis:alpine"
+  front:
+    build: ./front
+    volumes:
+      - ./front:/usr/src
+      - /usr/src/node_modules
+      - /usr/src/.next
     ports:
-      - "6379:6379"
+      - 3000:3000
+    depends_on:
+      - djangofest
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
 
   celery:
     build: ./djangofest

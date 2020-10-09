@@ -6,3 +6,7 @@ djangofest/djangofest/media/
 djangofest/djangofest/static/
 .DS_Store
 postgres-data/*
+
+front/node_modules/
+
+front/.next/
