@@ -22,3 +22,4 @@ django-3-jet==1.0.8
 pillow
 django-prettyjson
 django-filter
+django-import-export==2.4.0
